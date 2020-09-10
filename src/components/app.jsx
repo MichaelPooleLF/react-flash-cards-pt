@@ -2,6 +2,7 @@ import React from "react";
 import ViewCards from "./view-cards";
 import Review from "./review-cards";
 import CreateCard from "./create-card";
+import Nav from "./nav"
 
 class App extends React.Component {
   constructor(props) {
@@ -9,11 +10,13 @@ class App extends React.Component {
     this.state = {
       view: "view-cards"
     };
+    this.setView = this.setView.bind(this);
   }
 
-  setView(view) {
+  setView(viewState) {
+    event.preventDefault();
     this.setState({
-      view: view
+      view: viewState
     })
   }
 
@@ -33,6 +36,7 @@ class App extends React.Component {
   render() {
     return (
       <>
+        <Nav setView={this.setView} />
         {this.getView()}
       </>
     );
