@@ -5,7 +5,7 @@ class CreateCard extends React.Component {
     super(props);
     this.state = {
       question: "",
-      answer: ""
+      answer: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,13 +16,15 @@ class CreateCard extends React.Component {
     const {name, value} = event.target;
 
     this.setState({
-      [name]: value
-    })
+      [name]: value,
+      id: this.props.cardId
+    }, console.log(this.props.cardId))
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.props.addCard(this.state);
+    this.props.updateId();
     this.handleReset(event);
   }
 
