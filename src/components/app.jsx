@@ -26,7 +26,7 @@ class App extends React.Component {
   getView() {
     switch (this.state.view) {
       case 'create-card':
-        return <CreateCard addCard={this.addCard} />;
+        return <CreateCard addCard={this.addCard} setView={this.setView} />;
       case 'review-cards':
         return <Review />;
       case 'view-cards':

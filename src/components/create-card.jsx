@@ -3,15 +3,25 @@ import React from "react";
 function CreateCard(props) {
   function handleSubmit(event) {
     event.preventDefault();
-    const question = event.target.question.value;
-    const answer = event.target.answer.value;
-    console.log(question, answer);
+    const formQuestion = event.target.question.value;
+    const formAnswer = event.target.answer.value;
+    const card = {
+      question: formQuestion,
+      answer: formAnswer
+    }
+    props.addCard(card);
+    handleReset(event);
+  }
+
+  function handleReset(event) {
+    event.target.reset();
+    props.setView("view-cards");
   }
 
   return (
     <>
       <h1 className="text-center">Create New Card</h1>
-      <form className="container mt-5" onSubmit={handleSubmit}>
+      <form className="container mt-5" onSubmit={handleSubmit} onReset={handleReset}>
         <div className="form-group">
           <label htmlFor="question">Question</label>
           <textarea className="form-control" type="text" name="question" id="question"></textarea>
