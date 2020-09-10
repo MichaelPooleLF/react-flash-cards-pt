@@ -46,7 +46,7 @@ class App extends React.Component {
     myCards.push(card);
     this.setState({
       cards: myCards
-    }, this.saveCards());
+    }, this.saveCards;
   }
 
   render() {
