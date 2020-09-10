@@ -11,9 +11,15 @@ class App extends React.Component {
       view: "create-card",
       cards: []
     };
+    this.newCardId = 0;
     this.setView = this.setView.bind(this);
     this.saveCards = this.saveCards.bind(this);
     this.addCard = this.addCard.bind(this);
+    this.updateNewCardId = this.updateNewCardId.bind(this)
+  }
+
+  updateNewCardId(){
+    this.newCardId++;
   }
 
   setView(viewState) {
@@ -26,11 +32,12 @@ class App extends React.Component {
   getView() {
     switch (this.state.view) {
       case 'create-card':
-        return <CreateCard addCard={this.addCard} setView={this.setView} />;
+        return <CreateCard addCard={this.addCard} setView={this.setView}
+        updateId={this.updateNewCardId} cardId={this.newCardId}/>;
       case 'review-cards':
         return <Review />;
       case 'view-cards':
-        return <ViewCards />;
+        return <ViewCards cards={this.state.cards}/>;
       default:
         return null;
     }
@@ -46,8 +53,8 @@ class App extends React.Component {
     myCards.push(card);
     this.setState({
       cards: myCards
-    }, this.saveCards;
-  }
+    }, this.saveCards)
+  };
 
   render() {
     console.log(this.state.cards);
