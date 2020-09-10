@@ -1,3 +1,15 @@
 textarea {
   resize: none;
 }
+
+.card {
+  background-color: black;
+}
+
+.card-body:first-child {
+  background-color: #FF65A3;
+}
+
+.card-body:last-child {
+  background-color: #FFF740;
+}

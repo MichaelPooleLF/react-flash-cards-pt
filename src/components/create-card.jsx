@@ -13,16 +13,11 @@ class CreateCard extends React.Component {
   }
 
   handleChange(event) {
-    const target = event.target;
-    if (target.name === "question") {
-      this.setState({
-        question: target.value
-      })
-    } else if (target.name === "answer") {
-      this.setState({
-        answer: target.value
-      })
-    }
+    const {name, value} = event.target;
+
+    this.setState({
+      [name]: value
+    })
   }
 
   handleSubmit(event) {

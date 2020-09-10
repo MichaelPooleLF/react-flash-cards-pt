@@ -30,7 +30,7 @@ class App extends React.Component {
       case 'review-cards':
         return <Review />;
       case 'view-cards':
-        return <ViewCards />;
+        return <ViewCards cards={this.state.cards}/>;
       default:
         return null;
     }
@@ -46,8 +46,8 @@ class App extends React.Component {
     myCards.push(card);
     this.setState({
       cards: myCards
-    }, this.saveCards;
-  }
+    }, this.saveCards)
+  };
 
   render() {
     console.log(this.state.cards);
