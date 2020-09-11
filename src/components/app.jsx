@@ -8,7 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeCard: {};
+      activeCard: {},
       view: "create-card",
       cards: []
     };
@@ -20,8 +20,23 @@ class App extends React.Component {
     this.setActiveCard = this.setActiveCard.bind(this);
   }
 
+  componentDidMount() {
+    const savedCards = JSON.parse(localStorage.getItem("flash-cards"));
+    const currentId = parseFloat(localStorage.getItem("current-id"));
+    if (currentId) {
+      this.newCardId = currentId;
+    }
+    console.log(this.newCardId);
+    if (savedCards !== null) {
+      this.setState({
+        cards: savedCards
+      })
+    }
+  }
+
   updateNewCardId(){
     this.newCardId++;
+    localStorage.setItem("current-id", this.newCardId);
   }
 
   setView(viewState) {
@@ -37,7 +52,7 @@ class App extends React.Component {
         return <CreateCard addCard={this.addCard} setView={this.setView}
         updateId={this.updateNewCardId} cardId={this.newCardId}/>;
       case 'review-cards':
-        return <Review activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
+        return <Review activeCard={this.state.activeCard} setActiveCard={this.setActiveCard}/>;
       case 'view-cards':
         return <ViewCards cards={this.state.cards}/>;
       default:
@@ -59,14 +74,14 @@ class App extends React.Component {
   }
 
   setActiveCard(index) {
-    const cards = this.state.cards.map(element => ({...elements}))
+    const cards = this.state.cards.map(element => ({...element}))
     this.setState({
       activeCard: cards[index]
     })
   }
 
   render() {
-    console.log(this.state.cards);
+    const myCards = localStorage.getItem("flash-cards");
     return (
       <>
         <Nav setView={this.setView} />

@@ -1,22 +1,25 @@
 import React from "react";
 
 function CreateCards(props) {
-  const cardArray = props.cards.map(element => {
-    return (
-      <div key={element.id} className="col mb-4">
-        <div className="card h-100">
-          <div className="card-body border-bottom border-dark">
-            <h5 className="card-title">Question:</h5>
-            <p className="card-text">{element.question}</p>
-          </div>
-          <div className="card-body">
-            <h5 className="card-title">Answer:</h5>
-            <p className="card-text">{element.answer}</p>
+  let cardArray = "";
+  if (props.cards) {
+    cardArray = props.cards.map(element => {
+      return (
+        <div key={element.id} className="col mb-4">
+          <div className="card h-100">
+            <div className="card-body border-bottom border-dark">
+              <h5 className="card-title">Question:</h5>
+              <p className="card-text">{element.question}</p>
+            </div>
+            <div className="card-body">
+              <h5 className="card-title">Answer:</h5>
+              <p className="card-text">{element.answer}</p>
+            </div>
           </div>
         </div>
-      </div>
-    )
-  });
+      )
+    });
+  }
 
   return cardArray;
 }
