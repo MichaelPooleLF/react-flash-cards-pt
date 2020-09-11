@@ -8,6 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      activeCard: {};
       view: "create-card",
       cards: []
     };
@@ -15,7 +16,8 @@ class App extends React.Component {
     this.setView = this.setView.bind(this);
     this.saveCards = this.saveCards.bind(this);
     this.addCard = this.addCard.bind(this);
-    this.updateNewCardId = this.updateNewCardId.bind(this)
+    this.updateNewCardId = this.updateNewCardId.bind(this);
+    this.setActiveCard = this.setActiveCard.bind(this);
   }
 
   updateNewCardId(){
@@ -35,7 +37,7 @@ class App extends React.Component {
         return <CreateCard addCard={this.addCard} setView={this.setView}
         updateId={this.updateNewCardId} cardId={this.newCardId}/>;
       case 'review-cards':
-        return <Review />;
+        return <Review activeCard={this.state.activeCard} setActiveCard={this.setActiveCard} />;
       case 'view-cards':
         return <ViewCards cards={this.state.cards}/>;
       default:
@@ -54,7 +56,14 @@ class App extends React.Component {
     this.setState({
       cards: myCards
     }, this.saveCards)
-  };
+  }
+
+  setActiveCard(index) {
+    const cards = this.state.cards.map(element => ({...elements}))
+    this.setState({
+      activeCard: cards[index]
+    })
+  }
 
   render() {
     console.log(this.state.cards);
