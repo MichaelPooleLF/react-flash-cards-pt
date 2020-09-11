@@ -52,7 +52,8 @@ class App extends React.Component {
         return <CreateCard addCard={this.addCard} setView={this.setView}
         updateId={this.updateNewCardId} cardId={this.newCardId}/>;
       case 'review-cards':
-        return <Review activeCard={this.state.activeCard} setActiveCard={this.setActiveCard}/>;
+        return <Review activeCard={this.state.activeCard} setActiveCard={this.setActiveCard}
+        numberOfCards={this.state.cards.length}/>;
       case 'view-cards':
         return <ViewCards cards={this.state.cards}/>;
       default:

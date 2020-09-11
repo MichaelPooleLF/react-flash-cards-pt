@@ -15,7 +15,18 @@ class ReviewCards extends React.Component {
 
   nextCard() {
     this.index++;
-    this.setActiveCard(this.index)
+    if (this.index === this.props.numberOfCards) {
+      this.index = 0;
+    }
+    this.setActiveCard(this.index);
+  }
+
+  previousCard() {
+    this.index--;
+    if (this.index === -1) {
+      this.index = this.props.numberOfCards - 1;
+    }
+    this.setActiveCard(this.index);
   }
 
   render() {
