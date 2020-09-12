@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       activeCard: {},
-      view: "create-card",
+      view: "view-cards",
       cards: []
     };
     this.newCardId = 0;
@@ -26,7 +26,6 @@ class App extends React.Component {
     if (currentId) {
       this.newCardId = currentId;
     }
-    console.log(this.newCardId);
     if (savedCards !== null) {
       this.setState({
         cards: savedCards
