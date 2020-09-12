@@ -19,7 +19,7 @@ class App extends React.Component {
     this.addCard = this.addCard.bind(this);
     this.updateNewCardId = this.updateNewCardId.bind(this);
     this.setActiveCard = this.setActiveCard.bind(this);
-    this.deleteCard = this.deleteCard.bind(this);
+    this.openDeleteModal = this.openDeleteModal.bind(this);
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
   }
@@ -58,8 +58,9 @@ class App extends React.Component {
         return <Review activeCard={this.state.activeCard} setActiveCard={this.setActiveCard}
         numberOfCards={this.state.cards.length}/>;
       case 'view-cards':
-        return <ViewCards cards={this.state.cards} deleteCard={this.deleteCard}
-        isModalOpen={this.state.isModalOpen} activeCard={this.state.activeCard} />;
+        return <ViewCards cards={this.state.cards} deleteCard={this.openDeleteModal}
+        isModalOpen={this.state.isModalOpen} activeCard={this.state.activeCard}
+        close={this.close}/>;
       default:
         return null;
     }
@@ -85,11 +86,24 @@ class App extends React.Component {
     });
   }
 
-  deleteCard(event) {
-    const cardToDelete = event.target.getAttribute("id");
-    this.setActiveCard(cardToDelete);
+  openDeleteModal(event) {
     if (!this.isModalOpen) {
+      const cardToDelete = event.target.getAttribute("id");
+      this.setActiveCard(cardToDelete);
       this.open();
+    } else {
+      this.close();
+      console.log("hello from delete else");
+    //   const myCards = this.state.cards.map(element => ({...element}));
+    //   myCards.forEach((element, index) => {
+    //     if (element.id === this.state.activeCard.id) {
+    //       myCards.splice(index, 1);
+    //     }
+    //   });
+    //   this.setState({
+    //     cards: myCards,
+    //     activeCard: {}
+    //   });
     }
   }
 
@@ -103,6 +117,10 @@ class App extends React.Component {
     this.setState({
       isModalOpen: false
     })
+  }
+
+  removeCard() {
+
   }
 
   render() {

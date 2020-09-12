@@ -20,8 +20,8 @@ function DeleteModal(props) {
               </div>
             </div>
             <div>
-              <button className="btn btn-success">Yes, Delete This Card!</button>
-              <button className="btn btn-danger ml-3">No, I Want To Keep It.</button>
+              <button onClick={props.deleteCard} className="btn btn-success">Yes, Delete This Card!</button>
+              <button onClick={props.close} className="btn btn-danger ml-3">No, I Want To Keep It.</button>
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@ function DeleteModal(props) {
     )
   } else {
     return (
-      <h1 className="text-center text-light"></h1>
+      <></>
     )
   }
 }
@@ -67,7 +67,7 @@ function ViewCards(props) {
           <CreateCards cards={props.cards} deleteCard={props.deleteCard}/>
         </div>
       </div>
-      <DeleteModal card={props.activeCard} isModalOpen={props.isModalOpen} />
+      <DeleteModal deleteCard={props.deleteCard} close={props.close} card={props.activeCard} isModalOpen={props.isModalOpen} />
     </>
   );
 }
