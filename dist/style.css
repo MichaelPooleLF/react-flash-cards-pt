@@ -6,10 +6,40 @@ textarea {
   background-color: black;
 }
 
-.card-body:first-child {
+.question {
   background-color: #FF65A3;
 }
 
-.card-body:last-child {
+.answer {
   background-color: #FFF740;
+}
+
+.review-row {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fa-angle-left, .fa-angle-right {
+  font-size: 5rem;
+  color: rgba(255,255,255,.5);
+  cursor: pointer;
+}
+
+.review-card {
+  width: 70%;
+  height: 20rem;
+  border-radius: 1rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.review-card > .card-body {
+  border-radius: 1rem;
+  padding: 3rem;
+}
+
+.review-card > .question, .review-card > .answer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
