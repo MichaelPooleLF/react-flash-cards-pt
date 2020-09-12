@@ -43,3 +43,11 @@ textarea {
   justify-content: center;
   align-items: center;
 }
+
+.fa-times {
+  position: absolute;
+  top: 11px;
+  right: 12px;
+  cursor: pointer;
+  font-size: 1.3rem;
+}

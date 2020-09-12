@@ -9,6 +9,7 @@ function CreateCards(props) {
           <div className="card h-100">
             <div className="card-body border-bottom border-dark question">
               <h5 className="card-title">Question:</h5>
+              <i class="fa fa-times"></i>
               <p className="card-text">{element.question}</p>
             </div>
             <div className="card-body answer">
